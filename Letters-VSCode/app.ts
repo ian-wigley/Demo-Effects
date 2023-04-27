@@ -17,32 +17,34 @@
 }
 
 class Mess {
-    private m_canvas: HTMLCanvasElement;
+    private m_canvas!: HTMLCanvasElement;
     private m_ctx: CanvasRenderingContext2D;
-    private m_blockImage: HTMLImageElement;
-    private font = [];
+    private m_blockImage!: HTMLImageElement;
+    private font = new Array();
     private m_letterHeight: number = 14;
     private m_letterWidth: number = 17;
     private m_text: string = "hello ...";
-    private m_letterCollection = [];
+    private m_letterCollection: Array<Letter> = [];
     private m_scroll: number = 10;
-    private m_stride: number = 17;
+    // private m_stride: number = 17;
     private m_scaleX: number = 5;
     private m_scaleY: number = 5;
     private m_ascii = 97;
-    private rar: Letter;
     private m_fader = new Array();
-    private m_faderCounter:number = 1;
+    private m_faderCounter: number = 1;
     private m_bollo: number = 0;
 
     constructor(element: HTMLElement) {
+        this.m_canvas = <HTMLCanvasElement>document.getElementById("canvas");
+        const ctx = this.m_canvas.getContext('2d');
+        if (!ctx) {
+            throw new Error("getContext('2d') failed");
+        }
+        this.m_ctx = ctx;
         this.init();
     }
 
     private init(): void {
-        this.m_canvas = <HTMLCanvasElement>document.getElementById("canvas");
-        this.m_ctx = this.m_canvas.getContext("2d");
-
         var fontImage: HTMLImageElement = <HTMLImageElement>document.getElementById("font");
         this.m_blockImage = <HTMLImageElement>document.getElementById("block");
 
@@ -50,8 +52,7 @@ class Mess {
         var imagedata = this.GetImageData(fontImage);
         var pixelData = imagedata.data;
 
-        // stride = the image width
-        var temp = [];
+        var temp: Array<number> = new Array();
         var count = 0;
         for (var a = 1; a < 27; a++) {
             for (var y = 0; y < this.m_letterHeight; y++) {
@@ -72,8 +73,8 @@ class Mess {
             }
             //Reset the counter to the start of the next letter
             count = a * (this.m_letterWidth * 4);
-            this.rar = new Letter(this.font, this.m_ascii++);
-            this.m_letterCollection.push(this.rar);
+            let rar = new Letter(this.font, this.m_ascii++);
+            this.m_letterCollection.push(rar);
             this.font = [];
         }
 
@@ -92,29 +93,27 @@ class Mess {
                 fad = 0;
             }
         }
-
         this.m_ctx.globalAlpha = 0;
     }
 
     // Function to extract the data from the Image
-    private GetImageData(image) {
+    private GetImageData(image: any) {
         // set the stride width to the image width * 4 bytes
-        this.m_stride = image.width * 4;
-
-        var canvas = document.createElement('canvas');
+        // this.m_stride = image.width * 4;
+        let canvas = document.createElement('canvas');
         canvas.width = image.width;
         canvas.height = image.height;
-        var context = canvas.getContext('2d');
+        let context = canvas.getContext('2d');
+        if (!context) {
+            throw new Error("getContext('2d') failed");
+        }
         context.drawImage(image, 0, 0);
         return context.getImageData(0, 0, image.width, image.height);
     }
 
-
     public update(): void {
-
         this.m_ctx.fillStyle = "black";
         this.m_ctx.clearRect(0, 0, 800, 600);
-
         this.m_ctx.beginPath();
         var p = 0;
         for (var a = 0; a < this.m_text.length; a++) {
@@ -123,22 +122,22 @@ class Mess {
                 if (this.m_letterCollection[b].asciiCode == lett) {
                     var ront = this.m_letterCollection[b].block;
                     this.drawBlocks(p, ront);
-                    p += 80;//100
+                    p += 80;
                 }
             }
         }
     }
 
-    private drawBlocks(spacing: number, relic) {
+    private drawBlocks(spacing: number, relic: any) {
         this.m_bollo += 0.08;
         if (this.m_bollo > 2) {
-            var alf: number = this.m_fader[this.m_faderCounter]; 
+            let alf: number = this.m_fader[this.m_faderCounter];
             this.m_ctx.globalAlpha = alf;
             this.m_bollo = 0;
             this.m_faderCounter += 1;
         }
-        for (var x = 0; x < this.m_letterHeight; x++) {
-            for (var i = 0; i < this.m_letterWidth; i++) {
+        for (let x = 0; x < this.m_letterHeight; x++) {
+            for (let i = 0; i < this.m_letterWidth; i++) {
                 if (relic[x][i] == 1) {
                     this.m_ctx.drawImage(this.m_blockImage, i * this.m_scaleX + this.m_scroll + spacing, x * this.m_scaleY, this.m_scaleX, this.m_scaleY);
                 }
@@ -148,7 +147,7 @@ class Mess {
 }
 
 window.onload = () => {
-    var el = document.getElementById('content');
-    var mess = new Mess(el);
+    let el = <HTMLCanvasElement>document.getElementById('content');
+    let mess = new Mess(el);
     setInterval(() => mess.update(), 13);
 };
