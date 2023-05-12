@@ -1,6 +1,6 @@
-# Letters written in Typescript (probably not the best name for a repo ...)
-This simple project is based on an old school C64 demo effect.
+# Old school style demo effects (was called Letters before!)
 
-It parses a Bitmap font & recreates it using a single image to display text as seen below.
+Letters written in Typescript, this example project is based on an old school C64 demo effect.
+It parses a Bitmap font to extract the shape of each letter, renders another image to geneate a string of text as seen below:
 
 ![](Letters.jpg)
