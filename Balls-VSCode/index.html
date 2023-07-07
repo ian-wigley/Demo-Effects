@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TypeScript Demo_effects</title>
+    <style>
+
+        * {cursor: none;}
+
+        body {
+            background-color: black;
+        }
+
+        #container {
+            width: 800px;
+            height: 600px;
+            border: 0px black;
+            margin: 0px auto;
+            text-align: center;
+        }
+
+        #canvas {
+            border: 0px black;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <canvas id="canvas" width="800" height="600"></canvas>
+    </div>
+
+    <img id = "greenball" src="images/greenball.png" style="display: none;" alt="" />
+
+    <script data-main="out/main.js" src="out/require.js"></script>
+
+</body>
+</html>
