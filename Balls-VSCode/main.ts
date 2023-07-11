@@ -1,6 +1,8 @@
 ﻿require(["out/Balls.js"], function (BallDemo: any) {
     let balls = new BallDemo();
     balls.Initialize();
+    balls.load("cs.dat", "cosine");
+    balls.load("sn.dat", "sine");
     balls.Run();
 });
 
