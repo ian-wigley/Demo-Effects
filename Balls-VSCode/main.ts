@@ -1,9 +1,9 @@
 ﻿require(["out/Balls.js"], function (BallDemo: any) {
     let balls = new BallDemo();
-    balls.Initialize();
+    balls.initialize();
     balls.load("cs.dat", "cosine");
     balls.load("sn.dat", "sine");
-    balls.Run();
+    balls.run();
 });
 
 require.config({
