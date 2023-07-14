@@ -50,3 +50,4 @@ Letters-Vis_Studio/Letters/bin/
 *.cache
 .vs/config/applicationhost.config
 Letters-VSCode/out/
+Balls-VSCode/out/*.map
