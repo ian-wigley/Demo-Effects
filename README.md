@@ -9,6 +9,6 @@ It parses a Bitmap font to extract the shape of each letter, renders another ima
 ![](Letters.jpg)
 
 # 2.) Balls #
-<br>This example is a port from Blitz Basic demo written by Zawran to Typescript.
+<br>This example is a conversion of part of a demo written in Blitz Basic by Zawran to Typescript.
 
 ![](Balls.jpg)
