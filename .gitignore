@@ -45,9 +45,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
 Letters-Vis_Studio/Letters/obj/
 Letters-Vis_Studio/Letters/bin/
 *.cache
 .vs/config/applicationhost.config
 Letters-VSCode/out/
 Balls-VSCode/out/*.map
+Scroll-VSCode/out/
