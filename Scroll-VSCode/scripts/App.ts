@@ -50,8 +50,6 @@ export class App {
         const scrollText = "{{{{welcome|to|a|funky|scroller{{{{{{{{{";
         for (let i = 0; i < scrollText.length; i++) {
             for (let j = 0; j < this.letterFrames.length; j++) {
-                // let a = scrollText.charAt(i);
-                // let b = this.letterFrames[j].ascii;
                 if (scrollText.charAt(i) == this.letterFrames[j].ascii) {
                     let trip = false;
                     let letter = new Letter(
@@ -81,12 +79,11 @@ export class App {
         let sineCount = 0;
         let mSpeed = 4;
         let mAngle = 0;
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 13; i++) {
             mAngle += 0.5;
             sineValue = (Math.cos(mAngle) * mSpeed) + this.yScreenPosition;
             for (let j = 0; j < 10; j++) {
-                this.sineArray[sineCount] = sineValue;
-                sineCount++;
+                this.sineArray[sineCount++] = sineValue;
             }
         }
     }
@@ -125,8 +122,8 @@ export class App {
                 this.spacing += 30;
             }
             s.update(this.sineArray[s.index]);
-            this.sineCounter = (this.sineCounter < 130) ? this.sineCounter += 1 : 0;
-            index = (index >= 140) ? 0 : index += 1;
+            this.sineCounter = (this.sineCounter < this.sineArray.length - 1) ? this.sineCounter += 1 : 0;
+            index = (index >= this.sineArray.length - 1) ? 0 : index += 1;
             s.index = index;
         });
     }
