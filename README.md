@@ -12,3 +12,9 @@ It parses a Bitmap font to extract the shape of each letter, renders another ima
 <br>This example is a conversion of part of a demo written in Blitz Basic by Zawran to Typescript.
 
 ![](Balls.jpg)
+
+
+# 3.) Intro #
+<br>This example is an update to the old main page from website rewritten in Typescript.
+
+![](Intro.png)
