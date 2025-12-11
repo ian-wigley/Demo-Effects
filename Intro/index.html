@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>Demo</title>
+  <style>
+    * {
+      cursor: none;
+    }
+
+    body {
+      background-color: black;
+    }
+
+    #container {
+      width: 1024x;
+      height: 1024x;
+      border: 0px black;
+      margin: 0px auto;
+      text-align: center;
+    }
+
+    #canvas {
+      border: 0px black;
+      width: 1024px;
+      height: 1024px;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div id="container">
+      <canvas id="canvas" width="800" height="600" class="centerCanvas">
+        This text is displayed if your browser does not support HTML5 Canvas.
+      </canvas>
+    </div>
+
+    <script type="module">
+      import { App } from "/out/App.js"
+      let application = new App();
+      application.init();
+      application.run();
+    </script>
+
+  </section>
+</body>
+
+</html>
