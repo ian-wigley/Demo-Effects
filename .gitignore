@@ -53,3 +53,5 @@ Letters-Vis_Studio/Letters/bin/
 Letters-VSCode/out/
 Balls-VSCode/out/*.map
 Scroll-VSCode/out/
+/Letters/out
+/Intro/out
